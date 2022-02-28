@@ -17,7 +17,27 @@ namespace WindowsFormsApp1
 
         public void schet1()
         {
-            
+            int a = rnd.Next();
+
+            switch (a)
+            {
+                case 0:
+                    Console.WriteLine();
+                    break;
+                    //
+                    //
+                case 1:
+                    Console.WriteLine();
+                    break;
+                    //
+                    //
+                case 2:
+                    Console.WriteLine();
+                    break; 
+                    //
+                    //
+            }                       
+        
         }
 
         public void schet2()
