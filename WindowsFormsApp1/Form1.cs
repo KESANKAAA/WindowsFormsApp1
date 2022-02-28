@@ -61,6 +61,11 @@ namespace WindowsFormsApp1
                     Class1 cls = new Class1();
                     cls.schet4();
                 }
+                else if (a[i] == 'c')
+                {
+                    Class1 cls = new Class1();
+                    cls.schet5();
+                }
             }
         }
 
