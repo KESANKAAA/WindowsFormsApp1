@@ -17,25 +17,25 @@ namespace WindowsFormsApp1
 
         public void schet1()
         {
-            int a = rnd.Next();
+            int a = rnd.Next(2);
 
             switch (a)
             {
                 case 0:
-                    Console.WriteLine();
+                    char[] b = m[rnd.Next(m.Length)].ToString().ToUpper().ToCharArray();
+                    char k = b[1];
                     break;
-                    //
-                    //
+                    
+                    
                 case 1:
-                    Console.WriteLine();
+                    char c = m[rnd.Next(m.Length)];
                     break;
-                    //
-                    //
+                       
                 case 2:
-                    Console.WriteLine();
+                    char d = m[rnd.Next(n.Length)];
                     break; 
-                    //
-                    //
+                    
+                    
             }                       
         
         }
@@ -65,8 +65,9 @@ namespace WindowsFormsApp1
 
         public void file()
         {
-            string path = @"C:\Users\student.ISTU\Desktop";
+            string path = "C:/Users/student.ISTU/Desktop";
             FileStream fs = File.Create(path);
+           
         }
     }
 }

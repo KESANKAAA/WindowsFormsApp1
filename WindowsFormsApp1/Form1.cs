@@ -115,35 +115,37 @@ namespace WindowsFormsApp1
 
         private void button4_Click(object sender, EventArgs e)
         {
-          
-             
+                
+            s +=1;
             textBox2.Text = s.ToString();
-             s +=1;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (s!=0 || s>=1)
+            if (s!=0 && s>=1)
             {
-                textBox2.Text = s.ToString();
                 s -= 1;
+                textBox2.Text = s.ToString();
+
             }
-     
+
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            textBox2.Text = s.ToString();
             s += 10;
+            textBox2.Text = s.ToString();
+
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            if (s != 0 || s>=10)
+            if (s != 0 && s>=10)
             {
-                textBox2.Text = s.ToString();
                 s -= 10;
-            }           
+                textBox2.Text = s.ToString();
+
+            }
         }
 
         private void button8_Click(object sender, EventArgs e)
