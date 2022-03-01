@@ -63,11 +63,11 @@ namespace WindowsFormsApp1
         
         }
 
-        public void file()
-        {
-            string path = "C:/Users/student.ISTU/Desktop";
-            FileStream fs = File.Create(path);
+        //public void file()
+        //{
+        //    string path = "C:\Users\student.ISTU\Desktop";
+        //    FileStream fs = File.Create(path);
            
-        }
+        //}
     }
 }

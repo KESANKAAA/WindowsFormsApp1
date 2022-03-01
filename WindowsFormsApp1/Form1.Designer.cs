@@ -127,6 +127,7 @@
             this.button2.TabIndex = 9;
             this.button2.Text = "Перейти к файлу";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -191,7 +192,7 @@
             // 
             this.button8.Location = new System.Drawing.Point(257, 126);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
+            this.button8.Size = new System.Drawing.Size(75, 20);
             this.button8.TabIndex = 16;
             this.button8.Text = "Обзор";
             this.button8.UseVisualStyleBackColor = true;

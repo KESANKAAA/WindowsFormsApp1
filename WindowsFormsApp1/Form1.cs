@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace WindowsFormsApp1
 {
@@ -15,6 +16,8 @@ namespace WindowsFormsApp1
         List<string> lst = new List<string>();
         Stack<string> stc = new Stack<string>();
         public int s;
+        public string path;
+        FileStream fs = new FileStream(path,false);
 
         public Form1()
         {
@@ -28,7 +31,7 @@ namespace WindowsFormsApp1
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-
+        
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -150,7 +153,22 @@ namespace WindowsFormsApp1
 
         private void button8_Click(object sender, EventArgs e)
         {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
+            ofd.ShowDialog();
+            textBox3.Text = ofd.FileName;
+            path = ofd.FileName;
+            button2.Enabled = true;
+            button3.Enabled = true;
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //OpenFileDialog ofd = new OpenFileDialog();
+            //ofd.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
+            //ofd.ShowDialog();
+            //ofd.InitialDirectory = path;
+            System.Diagnostics.Process.Start(path);
         }
     }
 }
