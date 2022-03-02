@@ -192,7 +192,7 @@ namespace WindowsFormsApp1
                     {
                         case '*':
                             Class1 cls1 = new Class1();
-                            cls1.schet1();
+                            cls1.schet1(); 
                             return 
                             ch[j] = 
                             break;

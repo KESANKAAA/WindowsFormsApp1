@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
 
         public void schet1()
         {
-            int a = rnd.Next(2);
+            int a = rnd.Next(2); 
 
             switch (a)
             {
