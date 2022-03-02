@@ -14,6 +14,8 @@ namespace WindowsFormsApp1
        
         private char[] m = {'y','t','b','g','a'};
         private char[] n = { '1', '2', '3', '4', '5'};
+        public char b;
+
 
         public void schet1()
         {
@@ -39,17 +41,19 @@ namespace WindowsFormsApp1
             }                       
         
         }
-
+        
         public void schet2()
         {
             char[] a = m[rnd.Next(m.Length)].ToString().ToUpper().ToCharArray();
             char b = a[1];
+         
         }
 
         public void schet3()
         {
             char[] a = m[rnd.Next(m.Length)].ToString().ToCharArray();
-            char b = a[1];
+             b = a[1];
+            lst.a
         }
 
         public void schet4()

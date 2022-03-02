@@ -13,11 +13,18 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        List<string> lst = new List<string>();
         Stack<string> stc = new Stack<string>();
         public int s;
         public string path;
         FileStream fs = new FileStream(path,false);
+        public string m;
+        
+        static public int dl;
+        List<int>[] lst = new List<int>[dl];
+        
+        static public int dl1;
+        char[] ch = new char[dl1];
+
 
         public Form1()
         {
@@ -26,9 +33,8 @@ namespace WindowsFormsApp1
 
         private void label3_Click(object sender, EventArgs e)
         {
-
+            dl1 =  comboBox1.Text.Length;
         }
-
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
         
@@ -42,67 +48,69 @@ namespace WindowsFormsApp1
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string a = comboBox1.Text;
+            m = a;
+
             
-            for (int i = 0; i < comboBox1.Text.Length; i++)
-            {
+            //for (int i = 0; i < comboBox1.Text.Length; i++)
+            //{
 
-                switch (a[i])
-                {
-                    case '*': 
-                        Class1 cls1 = new Class1();
-                        cls1.schet1();
-                        break;
+            //    switch (a[i])
+            //    {
+            //        case '*': 
+            //            Class1 cls1 = new Class1();
+            //            cls1.schet1();
+            //            break;
                     
-                    case 'L':
-                        Class1 cls2 = new Class1();
-                        cls2.schet2();
-                        break;
+            //        case 'L':
+            //            Class1 cls2 = new Class1();
+            //            cls2.schet2();
+            //            break;
 
-                    case 'l':
-                        Class1 cls3 = new Class1();
-                        cls3.schet3();
-                        break;
+            //        case 'l':
+            //            Class1 cls3 = new Class1();
+            //            cls3.schet3();
+            //            break;
 
-                    case '_':
-                        Class1 cls4 = new Class1();
-                        cls4.schet4();
-                        break;
+            //        case '_':
+            //            Class1 cls4 = new Class1();
+            //            cls4.schet4();
+            //            break;
 
-                    case 'c':
-                        Class1 cls5 = new Class1();
-                        cls5.schet5();
-                        break;
-                }
+            //        case 'c':
+            //            Class1 cls5 = new Class1();
+            //            cls5.schet5();
+            //            break;
+            //    }
 
-                //if (a[i]=='*')
-                //{
-                //    Class1 cls = new Class1();
-                //    cls.schet1();
-                //}
+            //    //if (a[i]=='*')
+            //    //{
+            //    //    Class1 cls = new Class1();
+            //    //    cls.schet1();
+            //    //}
 
-                //else if(a[i] == 'L')
-                //{
-                //    Class1 cls = new Class1();
-                //    cls.schet2();
-                //}
+            //    //else if(a[i] == 'L')
+            //    //{
+            //    //    Class1 cls = new Class1();
+            //    //    cls.schet2();
+            //    //}
 
-                //else if (a[i] == 'l')
-                //{
-                //    Class1 cls = new Class1();
-                //    cls.schet3();
-                //}
+            //    //else if (a[i] == 'l')
+            //    //{
+            //    //    Class1 cls = new Class1();
+            //    //    cls.schet3();
+            //    //}
 
-                //else if (a[i] == '_')
-                //{
-                //    Class1 cls = new Class1();
-                //    cls.schet4();
-                //}
-                //else if (a[i] == 'c')
-                //{
-                //    Class1 cls = new Class1();
-                //    cls.schet5();
-                //}
-            }
+            //    //else if (a[i] == '_')
+            //    //{
+            //    //    Class1 cls = new Class1();
+            //    //    cls.schet4();
+            //    //}
+            //    //else if (a[i] == 'c')
+            //    //{
+            //    //    Class1 cls = new Class1();
+            //    //    cls.schet5();
+            //    //}
+            //}
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -169,6 +177,77 @@ namespace WindowsFormsApp1
             //ofd.ShowDialog();
             //ofd.InitialDirectory = path;
             System.Diagnostics.Process.Start(path);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dl = Convert.ToInt32(textBox2.Text);
+            
+            for (int i = 0; i < Convert.ToInt32(textBox2.Text); i++)
+            {
+                for (int j = 0; j < comboBox1.Text.Length; j++)
+                {
+
+                    switch (m[j])
+                    {
+                        case '*':
+                            Class1 cls1 = new Class1();
+                            cls1.schet1();
+                            return 
+                            ch[j] = 
+                            break;
+
+                        case 'L':
+                            Class1 cls2 = new Class1();
+                            cls2.schet2();
+                            break;
+
+                        case 'l':
+                            Class1 cls3 = new Class1();
+                            cls3.schet3();
+                            break;
+
+                        case '_':
+                            Class1 cls4 = new Class1();
+                            cls4.schet4();
+                            break;
+
+                        case 'c':
+                            Class1 cls5 = new Class1();
+                            cls5.schet5();
+                            break;
+                    }
+
+                    //if (a[i]=='*')
+                    //{
+                    //    Class1 cls = new Class1();
+                    //    cls.schet1();
+                    //}
+
+                    //else if(a[i] == 'L')
+                    //{
+                    //    Class1 cls = new Class1();
+                    //    cls.schet2();
+                    //}
+
+                    //else if (a[i] == 'l')
+                    //{
+                    //    Class1 cls = new Class1();
+                    //    cls.schet3();
+                    //}
+
+                    //else if (a[i] == '_')
+                    //{
+                    //    Class1 cls = new Class1();
+                    //    cls.schet4();
+                    //}
+                    //else if (a[i] == 'c')
+                    //{
+                    //    Class1 cls = new Class1();
+                    //    cls.schet5();
+                    //}
+                }
+            }
         }
     }
 }
