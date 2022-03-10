@@ -68,11 +68,14 @@ namespace WindowsFormsApp1
 
         public void obnul() 
         {
-            mas = null;
+            foreach (var x in mas)
+            {
+                mas[x] = '0'; //////////!!!!!!!!
+            }
         }
         public void dob()
         {
-            Form1.lst1[Form1.r1].Add(mas);
+            Form1.lst1[Form1.r1].Add(mas[//////]);!!!!!!!!!
         }
 
         //public void file()
