@@ -203,7 +203,7 @@
             // 
             this.button9.Location = new System.Drawing.Point(210, 30);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.Size = new System.Drawing.Size(75, 21);
             this.button9.TabIndex = 17;
             this.button9.Text = "Стек масок";
             this.button9.UseVisualStyleBackColor = true;

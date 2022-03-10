@@ -13,27 +13,28 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        
         Stack<string> stc = new Stack<string>();
         public int s;
         public string path;
-        FileStream fs = new FileStream(path,false);
+        
+        //FileStream fs = new FileStream(path,false);
         public string m;
-        
-        static public int dl;
-        List<int>[] lst = new List<int>[dl];
-        
-        static public int dl1;
-        char[] ch = new char[dl1];
 
 
-        public Form1()
+
+         public static List<char>[] lst1 = new List<char>[]();
+         public static int r1;
+
+
+
+        public Form1() 
         {
             InitializeComponent();
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
-            dl1 =  comboBox1.Text.Length;
         }
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
@@ -42,7 +43,7 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -181,42 +182,38 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dl = Convert.ToInt32(textBox2.Text);
-            
+            k1 = comboBox1.Text.Length;
+
             for (int i = 0; i < Convert.ToInt32(textBox2.Text); i++)
             {
+                r1 = i;
                 for (int j = 0; j < comboBox1.Text.Length; j++)
                 {
-
+                    Class1 cls1 = new Class1();
                     switch (m[j])
                     {
                         case '*':
-                            Class1 cls1 = new Class1();
                             cls1.schet1(); 
-                            return 
-                            ch[j] = 
                             break;
 
                         case 'L':
-                            Class1 cls2 = new Class1();
-                            cls2.schet2();
+                            cls1.schet2();
                             break;
 
                         case 'l':
-                            Class1 cls3 = new Class1();
-                            cls3.schet3();
+                            cls1.schet3();
                             break;
 
                         case '_':
-                            Class1 cls4 = new Class1();
-                            cls4.schet4();
+                            cls1.schet4();
                             break;
 
                         case 'c':
-                            Class1 cls5 = new Class1();
-                            cls5.schet5();
+                            cls1.schet5();
                             break;
                     }
+                    cls1.dob();
+                    cls1.obnul();
 
                     //if (a[i]=='*')
                     //{
@@ -248,6 +245,7 @@ namespace WindowsFormsApp1
                     //}
                 }
             }
+            listBox1.Items.Add(lst1);
         }
     }
 }

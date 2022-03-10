@@ -7,13 +7,13 @@ using System.IO;
 
 namespace WindowsFormsApp1
 {
-     class Class1
+    class Class1
     {
 
         Random rnd = new Random();
-       
-        private char[] m = {'y','t','b','g','a'};
-        private char[] n = { '1', '2', '3', '4', '5'};
+        private char[] m = { 'y', 't', 'b', 'g', 'a' };
+        private char[] n = { '1', '2', '3', '4', '5' };
+        public char[] mas = { };
         public char b;
 
 
@@ -28,15 +28,14 @@ namespace WindowsFormsApp1
                     char k = b[1];
                     break;
                     
-                    
                 case 1:
                     char c = m[rnd.Next(m.Length)];
                     break;
                        
                 case 2:
                     char d = m[rnd.Next(n.Length)];
-                    break; 
                     
+                    break;        
                     
             }                       
         
@@ -53,7 +52,7 @@ namespace WindowsFormsApp1
         {
             char[] a = m[rnd.Next(m.Length)].ToString().ToCharArray();
              b = a[1];
-            lst.a
+                
         }
 
         public void schet4()
@@ -61,10 +60,19 @@ namespace WindowsFormsApp1
             char a = ' ';
         }
 
-        public void schet5()
+        public void schet5() 
         {
             char a = n[rnd.Next(m.Length)];
         
+        }
+
+        public void obnul() 
+        {
+            mas = null;
+        }
+        public void dob()
+        {
+            Form1.lst1[Form1.r1].Add(mas);
         }
 
         //public void file()
