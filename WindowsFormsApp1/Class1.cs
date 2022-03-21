@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
         Random rnd = new Random();
         private char[] m = { 'y', 't', 'b', 'g', 'a' };
         private char[] n = { '1', '2', '3', '4', '5' };
-        public char[] mas = { };
+        public char[] mas;
         public char b;
 
 
@@ -70,13 +70,10 @@ namespace WindowsFormsApp1
         {
             foreach (var x in mas)
             {
-                mas[x] = '0'; //////////!!!!!!!!
+                mas[x] = ' ';
             }
         }
-        public void dob()
-        {
-            Form1.lst1[Form1.r1].Add(mas[//////]);!!!!!!!!!
-        }
+
 
         //public void file()
         //{

@@ -22,9 +22,10 @@ namespace WindowsFormsApp1
         public string m;
 
 
-         public static int k1;
-         public static List<char>[] lst1 = new List<char>[k1];
-         public static int r1;
+        public static int k1;
+        //public static List<char>[] lst1 = new List<char>[] { };
+        public static string[] kes;
+        public static int r1;
 
 
 
@@ -35,6 +36,7 @@ namespace WindowsFormsApp1
 
         private void label3_Click(object sender, EventArgs e)
         {
+           
         }
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
@@ -50,68 +52,7 @@ namespace WindowsFormsApp1
         {
             string a = comboBox1.Text;
             m = a;
-
-            
-            //for (int i = 0; i < comboBox1.Text.Length; i++)
-            //{
-
-            //    switch (a[i])
-            //    {
-            //        case '*': 
-            //            Class1 cls1 = new Class1();
-            //            cls1.schet1();
-            //            break;
-                    
-            //        case 'L':
-            //            Class1 cls2 = new Class1();
-            //            cls2.schet2();
-            //            break;
-
-            //        case 'l':
-            //            Class1 cls3 = new Class1();
-            //            cls3.schet3();
-            //            break;
-
-            //        case '_':
-            //            Class1 cls4 = new Class1();
-            //            cls4.schet4();
-            //            break;
-
-            //        case 'c':
-            //            Class1 cls5 = new Class1();
-            //            cls5.schet5();
-            //            break;
-            //    }
-
-            //    //if (a[i]=='*')
-            //    //{
-            //    //    Class1 cls = new Class1();
-            //    //    cls.schet1();
-            //    //}
-
-            //    //else if(a[i] == 'L')
-            //    //{
-            //    //    Class1 cls = new Class1();
-            //    //    cls.schet2();
-            //    //}
-
-            //    //else if (a[i] == 'l')
-            //    //{
-            //    //    Class1 cls = new Class1();
-            //    //    cls.schet3();
-            //    //}
-
-            //    //else if (a[i] == '_')
-            //    //{
-            //    //    Class1 cls = new Class1();
-            //    //    cls.schet4();
-            //    //}
-            //    //else if (a[i] == 'c')
-            //    //{
-            //    //    Class1 cls = new Class1();
-            //    //    cls.schet5();
-            //    //}
-            //}
+           
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -173,10 +114,6 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //OpenFileDialog ofd = new OpenFileDialog();
-            //ofd.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
-            //ofd.ShowDialog();
-            //ofd.InitialDirectory = path;
             System.Diagnostics.Process.Start(path);
         }
 
@@ -215,37 +152,10 @@ namespace WindowsFormsApp1
                     cls1.dob();
                     cls1.obnul();
 
-                    //if (a[i]=='*')
-                    //{
-                    //    Class1 cls = new Class1();
-                    //    cls.schet1();
-                    //}
-
-                    //else if(a[i] == 'L')
-                    //{
-                    //    Class1 cls = new Class1();
-                    //    cls.schet2();
-                    //}
-
-                    //else if (a[i] == 'l')
-                    //{
-                    //    Class1 cls = new Class1();
-                    //    cls.schet3();
-                    //}
-
-                    //else if (a[i] == '_')
-                    //{
-                    //    Class1 cls = new Class1();
-                    //    cls.schet4();
-                    //}
-                    //else if (a[i] == 'c')
-                    //{
-                    //    Class1 cls = new Class1();
-                    //    cls.schet5();
-                    //}
+                 
                 }
             }
-            listBox1.Items.Add(lst1);
+            listBox1.Items.Add(kes.ToList);
         }
     }
 }
