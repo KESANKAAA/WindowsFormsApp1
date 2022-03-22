@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
 
 
         public static int k1;
-        //public static List<char>[] lst1 = new List<char>[] { };
+        public static List<char[]> lst1 = new List<char[]>();
         public static string[] kes;
         public static int r1;
 

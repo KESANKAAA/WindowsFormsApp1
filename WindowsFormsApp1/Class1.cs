@@ -73,6 +73,10 @@ namespace WindowsFormsApp1
                 mas[x] = ' ';
             }
         }
+        public void dob()
+        {
+            Form1.lst1.Add(mas);
+        }
 
 
         //public void file()
