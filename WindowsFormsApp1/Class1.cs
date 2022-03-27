@@ -12,9 +12,11 @@ namespace WindowsFormsApp1
 
         Random rnd = new Random();
         private char[] m = { 'y', 't', 'b', 'g', 'a' };
+        private char[] m1 = { 'Y', 'S', 'K', 'G', 'L' };
         private char[] n = { '1', '2', '3', '4', '5' };
-        public char[] mas;
-        public char b;
+        //public char[] mas;
+        public static List<char> mas = new List<char>();
+        
 
 
         public void schet1()
@@ -24,66 +26,64 @@ namespace WindowsFormsApp1
             switch (a)
             {
                 case 0:
-                    char[] b = m[rnd.Next(m.Length)].ToString().ToUpper().ToCharArray();
-                    char k = b[1];
+                    char b = m1[rnd.Next(m.Length)];
+                    mas.Add(b);
+                    
                     break;
                     
                 case 1:
                     char c = m[rnd.Next(m.Length)];
+                    mas.Add(c);
                     break;
                        
                 case 2:
-                    char d = m[rnd.Next(n.Length)];
-                    
+                    char d = n[rnd.Next(n.Length)];
+                    mas.Add(d);
                     break;        
                     
             }                       
         
         }
-        
+
         public void schet2()
         {
-            char[] a = m[rnd.Next(m.Length)].ToString().ToUpper().ToCharArray();
-            char b = a[1];
+            char a = m1[rnd.Next(m.Length)];
+            mas.Add(a);
+           
          
         }
 
         public void schet3()
         {
-            char[] a = m[rnd.Next(m.Length)].ToString().ToCharArray();
-             b = a[1];
+            char a = m[rnd.Next(m.Length)];
+            mas.Add(a);
                 
         }
 
         public void schet4()
         {
             char a = ' ';
+            mas.Add(a);
         }
 
         public void schet5() 
         {
             char a = n[rnd.Next(m.Length)];
+            mas.Add(a);   
         
         }
 
         public void obnul() 
         {
-            foreach (var x in mas)
-            {
-                mas[x] = ' ';
-            }
+                mas.Clear();
         }
         public void dob()
         {
-            Form1.lst1.Add(mas);
+            Form1.lst1.Add(mas.ToArray());
+            Console.WriteLine(mas.ToArray());
         }
 
 
-        //public void file()
-        //{
-        //    string path = "C:\Users\student.ISTU\Desktop";
-        //    FileStream fs = File.Create(path);
-           
-        //}
+        
     }
 }

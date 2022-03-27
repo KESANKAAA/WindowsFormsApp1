@@ -17,15 +17,17 @@ namespace WindowsFormsApp1
         Stack<string> stc = new Stack<string>();
         public int s;
         public string path;
-        
+        public string path2;
+
+
         //FileStream fs = new FileStream(path,false);
         public string m;
 
 
-        public static int k1;
+       
         public static List<char[]> lst1 = new List<char[]>();
         public static string[] kes;
-        public static int r1;
+       
 
 
 
@@ -36,7 +38,7 @@ namespace WindowsFormsApp1
 
         private void label3_Click(object sender, EventArgs e)
         {
-           
+          
         }
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
@@ -103,13 +105,26 @@ namespace WindowsFormsApp1
 
         private void button8_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
-            ofd.ShowDialog();
-            textBox3.Text = ofd.FileName;
-            path = ofd.FileName;
-            button2.Enabled = true;
-            button3.Enabled = true;
+  
+            SaveFileDialog sv = new SaveFileDialog();
+            if (sv.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    path = sv.FileName;
+                    using (Stream s = File.Open(sv.FileName, FileMode.Create))
+                    using (StreamWriter sw = new StreamWriter(s))
+                    {
+                        for (int i = 0; i < lst1.Count; i++)
+                        {
+                            sw.WriteLine(lst1[i]);
+                        }
+                    }
+                }
+                catch (Exception) { }
+                button2.Enabled = true;
+            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -119,15 +134,14 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            k1 = comboBox1.Text.Length;
-
+            comboBox1.Items.Add(comboBox1.Text);
+            Class1 cls1 = new Class1();
             for (int i = 0; i < Convert.ToInt32(textBox2.Text); i++)
-            {
-                r1 = i;
+            {  
                 for (int j = 0; j < comboBox1.Text.Length; j++)
                 {
-                    Class1 cls1 = new Class1();
-                    switch (m[j])
+                    
+                    switch (comboBox1.Text[j])
                     {
                         case '*':
                             cls1.schet1(); 
@@ -148,14 +162,53 @@ namespace WindowsFormsApp1
                         case 'c':
                             cls1.schet5();
                             break;
+                        default:
+                            Class1.mas.Add(comboBox1.Text[j]);
+                            break;   
                     }
-                    cls1.dob();
-                    cls1.obnul();
-
-                 
                 }
+                cls1.dob();
+                cls1.obnul();
+                
             }
-            listBox1.Items.Add(kes.ToList);
+            for (int k = 0; k < lst1.Count; k++)
+            {
+                string a = new string(lst1[k]);
+                listBox2.Items.Add(a);
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sv = new SaveFileDialog();
+            if (sv.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    path2 = sv.FileName;
+                    using (Stream s = File.Open(sv.FileName, FileMode.Create))
+                    using (StreamWriter sw = new StreamWriter(s))
+                    {
+                        for (int i = 0; i < lst1.Count; i++)
+                        {
+                            sw.WriteLine(comboBox1.Items[i]);
+                        }
+                    }
+                }
+                catch (Exception) { }
+                button2.Enabled = true;
+            }
+
+        }
+
+        private void button9_Click_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(path2);
         }
     }
 }
