@@ -190,7 +190,8 @@ namespace WindowsFormsApp1
                 }
             }
             else { MessageBox.Show("Ошибка значения поля:Колличество генераций","Ошибка");}
-           }
+            comboBox1.Focus();
+        }
 
         private void button9_Click(object sender, EventArgs e)
         {
@@ -243,6 +244,11 @@ namespace WindowsFormsApp1
                 }
             }
             catch (Exception) { }
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
