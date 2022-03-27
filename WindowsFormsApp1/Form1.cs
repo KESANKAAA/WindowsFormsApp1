@@ -19,6 +19,7 @@ namespace WindowsFormsApp1
         public string path;
         public string path2;
         public string path3;
+        
 
 
         //FileStream fs = new FileStream(path,false);
@@ -35,6 +36,9 @@ namespace WindowsFormsApp1
         public Form1() 
         {
             InitializeComponent();
+            comboBox1.Select();
+            this.ActiveControl = comboBox1;
+            comboBox1.Focus();
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -135,49 +139,58 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            comboBox1.Items.Add(comboBox1.Text);
-            Class1 cls1 = new Class1();
-            for (int i = 0; i < Convert.ToInt32(textBox2.Text); i++)
-            {  
-                for (int j = 0; j < comboBox1.Text.Length; j++)
-                {
-                    
-                    switch (comboBox1.Text[j])
-                    {
-                        case '*':
-                            cls1.schet1(); 
-                            break;
-
-                        case 'L':
-                            cls1.schet2();
-                            break;
-
-                        case 'l':
-                            cls1.schet3();
-                            break;
-
-                        case '_':
-                            cls1.schet4();
-                            break;
-
-                        case 'c':
-                            cls1.schet5();
-                            break;
-                        default:
-                            Class1.mas.Add(comboBox1.Text[j]);
-                            break;   
-                    }
-                }
-                cls1.dob();
-                cls1.obnul();
-                
-            }
-            for (int k = 0; k < lst1.Count; k++)
+            if (Convert.ToInt32(textBox2.Text)>0)
             {
-                string a = new string(lst1[k]);
-                listBox2.Items.Add(a);
+
+
+                comboBox1.Items.Add(comboBox1.Text);
+                Class1 cls1 = new Class1();
+                for (int i = 0; i < Convert.ToInt32(textBox2.Text); i++)
+                {
+                    for (int j = 0; j < comboBox1.Text.Length; j++)
+                    {
+
+                        switch (comboBox1.Text[j])
+                        {
+                            case '*':
+                                cls1.schet1();
+                                break;
+
+                            case 'L':
+                                cls1.schet2();
+                                break;
+
+                            case 'l':
+                                cls1.schet3();
+                                break;
+
+                            case '_':
+                                cls1.schet4();
+                                break;
+
+                            case 'c':
+                                cls1.schet5();
+                                break;
+                            case ';':
+                                cls1.schet6();
+                                break;
+                            default:
+                                Class1.mas.Add(comboBox1.Text[j]);
+                                break;
+                        }
+                    }
+                    cls1.dob();
+                    cls1.obnul();
+
+                }
+                for (int k = 0; k < lst1.Count; k++)
+                {
+                    string a = new string(lst1[k]);
+                    listBox2.Items.Add(a);
+                }
             }
-        }
+            else { MessageBox.Show("Ошибка значения поля:Колличество генераций","Ошибка");}
+           }
 
         private void button9_Click(object sender, EventArgs e)
         {
@@ -202,9 +215,8 @@ namespace WindowsFormsApp1
                     }
                 }
                 catch (Exception) { }
-                button2.Enabled = true;
+                button9.Enabled = true;
             }
-
         }
 
         private void button9_Click_1(object sender, EventArgs e)

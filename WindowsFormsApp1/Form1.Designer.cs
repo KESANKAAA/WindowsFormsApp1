@@ -181,6 +181,7 @@
             // 
             // button9
             // 
+            this.button9.Enabled = false;
             this.button9.Location = new System.Drawing.Point(12, 56);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(70, 23);
