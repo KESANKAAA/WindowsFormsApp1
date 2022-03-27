@@ -18,6 +18,7 @@ namespace WindowsFormsApp1
         public int s;
         public string path;
         public string path2;
+        public string path3;
 
 
         //FileStream fs = new FileStream(path,false);
@@ -209,6 +210,27 @@ namespace WindowsFormsApp1
         private void button9_Click_1(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(path2);
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == DialogResult.Cancel)
+                return;
+            try
+            {
+                path3 = ofd.FileName;
+                using (StreamReader sw = new StreamReader(path3))
+                {
+                    string line;
+                    
+                    while ((line = sw.ReadLine()) != null)
+                    {
+                        comboBox1.Items.Add(line);
+                    }
+                }
+            }
+            catch (Exception) { }
         }
     }
 }
