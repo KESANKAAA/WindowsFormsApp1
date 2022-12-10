@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Contracts;
 using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -11,7 +12,8 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+  
+public partial class Form1 : Form
     {
         public Form1()
         {
@@ -20,27 +22,27 @@ namespace WindowsFormsApp1
         }
 
         public Graphics plato;
-        Pen p1 = new Pen(Color.Blue,3);
+        Pen p1 = new Pen(Color.Blue, 3);
         Pen p2 = new Pen(Color.HotPink, 2);
-        Brush br = new SolidBrush(Color.AliceBlue);
+        Pen p3 = new Pen(Color.White, 3);
         public float ug1, ug2;
 
         public List<List<(float, float)>> list = new List<List<(float, float)>>();
-
+        public List<Rectangle> rectangles = new List<Rectangle>();
         public List<(float, float)> lst = new List<(float, float)>();
-        public List<(float, float)> lst1 = new List<(float, float)>();
-        public List<(float, float)> lst2 = new List<(float, float)>();
-        public List<(float, float)> lst3 = new List<(float, float)>();
+        
+        public  List<object> abc = new List<object>();
+
+        //Стек содержит списки координат, в каждом спике все координаты дуг, в которые можно шагнуть из ячейки
+
+        public float u1, u2, u3, u4;
+
 
         public int sw;
 
         private void button1_Click(object sender, EventArgs e)
         {
             plato.Clear(Color.White);
-            lst.Clear();
-            lst1.Clear();
-            lst2.Clear();
-            lst3.Clear();
 
             switch (sw)
             {
@@ -63,27 +65,76 @@ namespace WindowsFormsApp1
 
 
         }
+
+        //текущий список  хранит в себе координаты дуг в которые можно шагнуть из ячейки где мы находимся
+        //координаты будут скидываться в него друго за другом - 1 точка ячейки внутри,2 точка ячейки внутри; 1 точка ячейки снаружи, 2 точка ячейки снаружи
+        //1 точка следующей по счету ячейки в круге, 2 точка следующей по счету ячейки в круге; 1 точка предыдущей ячейки в круге, 2 точка предыдущей ячейки в круге
+
+        public Stack<List<(float, float)>> st = new Stack<List<(float, float)>>();
+        public List<(float, float)> vozm = new List<(float, float)>();   
+
+        //метод описывающий движение по кругу в следующую ячейку (с правого края по часовой)
+        
+        public void dvpokr() 
+        {
+            
+        }
+
+        //Метод описывающий движение по кругу в обратном направлении 
+
+        public void dvpprotivkr()
+        {
+
+        }
+
+        //метод описывающий движение в следующий круг, то есть к центру из текущего
+
+        public void dvvnutrb()
+        {
+            
+        }
+
+        //метод описывающий движение в предыдущий круг
+
+        public void dvvovn() 
+        {
+            
+        }
+
+        //Метод для отката по стеку получая в текущий список необходимые координаты из стека
+
+        public void otkat() 
+        {
+            
+        }
+
+
         public void postr(Pen p, float gr1, float gr2,int k,int size1,int size2)
         {
+            Rectangle r = new Rectangle();
+            r.Size = new Size(size1, size2);
+            r.X = pictureBox1.Width / 2 - r.Size.Width / 2;
+            r.Y = pictureBox1.Height / 2 - r.Size.Height / 2;
+            rectangles.Add(r);  
+
             for (int i = 0; i < k; i++)
             {
-                Rectangle r = new Rectangle();
-                r.Size = new Size(size1,size2);
-                r.X = pictureBox1.Width / 2 - r.Size.Width / 2;
-                r.Y = pictureBox1.Height / 2 - r.Size.Height / 2;
+                //Rectangle r = new Rectangle();
+                //r.Size = new Size(size1,size2);
+                //r.X = pictureBox1.Width / 2 - r.Size.Width / 2;
+                //r.Y = pictureBox1.Height / 2 - r.Size.Height / 2;
                 plato.DrawArc(p1, r, gr1, gr2);
 
                 //Рисование точек
                 double a, b;
                 a = (pictureBox1.Width / 2) + r.Size.Width / 2 * Math.Cos((gr1 * Math.PI) / 180);
                 b = (pictureBox1.Height / 2) + r.Size.Height / 2 * Math.Sin((gr1 * Math.PI) / 180);
-                plato.DrawEllipse(p2, (float)a - 2, (float)b - 2, 4, 4);
+                //plato.DrawEllipse(p2, (float)a - 2, (float)b - 2, 4, 4);
                 lst.Add(((float)a,(float)b));
                 gr1 += gr2;
             }
         }
 
-        
 
         public void kr3()
         {     
@@ -580,9 +631,18 @@ namespace WindowsFormsApp1
             sw = 12;
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             plato = pictureBox1.CreateGraphics();
+            u1 = 7.5F;
+            u2 = 15;
+            u3 = 30;
+            u4 = 60;
         }
     } 
 }
