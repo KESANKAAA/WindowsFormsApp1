@@ -12,8 +12,8 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-  
-public partial class Form1 : Form
+
+    public partial class Form1 : Form
     {
         public Form1()
         {
@@ -24,14 +24,19 @@ public partial class Form1 : Form
         public Graphics plato;
         Pen p1 = new Pen(Color.Blue, 3);
         Pen p2 = new Pen(Color.HotPink, 2);
-        Pen p3 = new Pen(Color.White, 3);
+        Pen p3 = new Pen(Color.White, 4);
         public float ug1, ug2;
 
         public List<List<(float, float)>> list = new List<List<(float, float)>>();
         public List<Rectangle> rectangles = new List<Rectangle>();
         public List<(float, float)> lst = new List<(float, float)>();
-        
-        public  List<object> abc = new List<object>();
+
+        public float[] n1 = { 30, 30, 60 };
+        public float[] n2 = { 15, 15, 30, 30, 60, 60 };
+        public float[] n3 = { 30, 30, 30, 15, 15, 15, 7.5F, 7.5F };
+        public float[] n4 = { 60, 60, 60, 30, 30, 30, 15, 15, 15, 7.5F, 7.5F, 7.5F };
+
+        public List<object> abc = new List<object>();
 
         //Стек содержит списки координат, в каждом спике все координаты дуг, в которые можно шагнуть из ячейки
 
@@ -71,27 +76,172 @@ public partial class Form1 : Form
         //1 точка следующей по счету ячейки в круге, 2 точка следующей по счету ячейки в круге; 1 точка предыдущей ячейки в круге, 2 точка предыдущей ячейки в круге
 
         public Stack<List<(float, float)>> st = new Stack<List<(float, float)>>();
-        public List<(float, float)> vozm = new List<(float, float)>();   
+        public List<(float, float)> vozm = new List<(float, float)>();
+        public List<List<float>> cr = new List<List<float>>() { new List<float> {60,30,30}, new List<float> { 15, 15, 30, 30, 60, 60 }, new List<float> { 7.5F, 7.5F, 7.5F, 15, 15, 15, 30, 30, 30}, new List<float> { 7.5F, 7.5F, 7.5F, 15, 15, 15, 30, 30, 30, 60, 60, 60 } };
 
         //метод описывающий движение по кругу в следующую ячейку (с правого края по часовой)
-        
-        public void dvpokr() 
+
+        int k = 0;
+        int nk = 0;
+        int nk2 = 1;
+        float ugg = 0;
+        int j = 0;
+        bool l = false;
+        public void dvpokr()
         {
-            
-        }
+            textBox1.Text = k.ToString();
+
+            if (l == false)
+            {
+                textBox1.Text = ugg.ToString();
+                if (k > list[nk].Count - 1)
+                {
+                    ugg = 0;
+                    k = 0;
+                }
+
+                plato.DrawLine(p3, list[nk][k].Item1, list[nk][k].Item2, list[nk2][k].Item1, list[nk2][k].Item2);
+                label2.Text = k.ToString();
+                k += 1;
+
+                label1.Text = j.ToString();
+                if (k % 2 == 0)
+                {
+                    j += 1;
+                }
+
+                if (k == 1)
+                {
+
+                }
+                else
+                {
+                    ugg += n1[nk2];
+                }
+
+            }
+            else 
+            {
+                if (k > list[nk].Count - 1)
+                {
+                    ugg = 0;
+                    k = 0;
+                    j = 0;
+                }
+
+                if (k%2 == 0)
+                {
+                    plato.DrawLine(p3, list[nk][k].Item1, list[nk][k].Item2, list[nk2][j].Item1, list[nk2][j].Item2);
+                }
+
+                label2.Text = k.ToString(); 
+                k += 1;
+
+                label1.Text = j.ToString();
+
+                if (k % 2 == 0)
+                {
+                    j += 1;
+                }
+
+                if (k == 1)
+                {
+
+                }
+                else
+                {
+                   
+                    if (k % 2 == 0)
+                    {
+                        ugg += n1[nk2];
+                    }
+                    textBox1.Text = ugg.ToString();
+                } 
+                
+            }
+    }
 
         //Метод описывающий движение по кругу в обратном направлении 
 
+        
         public void dvpprotivkr()
         {
+            if (l == false)
+            {
+               
+                if (k == 0)
+                {
+                    Console.WriteLine(list[nk].Count + " " + "asdasdasdas");
+                    k = list[nk].Count - 1;                    
+                }
+                else
+                {
+                    k -= 1;
+                }
+                label2.Text = k.ToString();
+                plato.DrawLine(p3, list[nk][k].Item1, list[nk][k].Item2, list[nk2][k].Item1, list[nk2][k].Item2);
 
+                if (ugg == 0)
+                {
+                    ugg = 360;
+                    ugg -= n1[nk2];
+                }
+                else
+                {
+                    if (k % 2 != 0)
+                    {
+                        ugg -= n1[nk2];
+                    }
+                }
+            }
+
+            else
+            {
+                if (k == 0)
+                {
+                    Console.WriteLine(list[nk].Count + " " + "asdasdasdas");
+                    k = list[nk].Count - 1;
+                }
+                else
+                {
+                    k -= 1;
+                }
+
+                plato.DrawLine(p3, list[nk][k].Item1, list[nk][k].Item2, list[nk2][j].Item1, list[nk2][j].Item2);
+
+                if (ugg == 0)
+                {
+                    ugg = 360;
+                    ugg -= n1[nk2];
+                }
+                else
+                {               
+                     ugg -= n1[nk2];                  
+                }
+            }
         }
 
         //метод описывающий движение в следующий круг, то есть к центру из текущего
 
         public void dvvnutrb()
         {
+            if (k % 2 != 0)
+            {
+                k += 1;
+                ugg += 30;
+            }
             
+            if (list[nk].Count != list[nk2].Count)
+            {
+                l = false;
+            }
+            else 
+            {
+                l = true;
+            }
+            plato.DrawArc(p3, rectangles[nk2], ugg, n1[nk2]);
+            nk += 1;
+            nk2 += 1;
         }
 
         //метод описывающий движение в предыдущий круг
@@ -118,18 +268,13 @@ public partial class Form1 : Form
             rectangles.Add(r);  
 
             for (int i = 0; i < k; i++)
-            {
-                //Rectangle r = new Rectangle();
-                //r.Size = new Size(size1,size2);
-                //r.X = pictureBox1.Width / 2 - r.Size.Width / 2;
-                //r.Y = pictureBox1.Height / 2 - r.Size.Height / 2;
+            {             
                 plato.DrawArc(p1, r, gr1, gr2);
 
                 //Рисование точек
                 double a, b;
                 a = (pictureBox1.Width / 2) + r.Size.Width / 2 * Math.Cos((gr1 * Math.PI) / 180);
                 b = (pictureBox1.Height / 2) + r.Size.Height / 2 * Math.Sin((gr1 * Math.PI) / 180);
-                //plato.DrawEllipse(p2, (float)a - 2, (float)b - 2, 4, 4);
                 lst.Add(((float)a,(float)b));
                 gr1 += gr2;
             }
@@ -431,14 +576,8 @@ public partial class Form1 : Form
                     break;
             }
         }
-        //lst1 - 6
-        //lst1 - 12
-        //lst1 - 12
-
-        public void risv1() 
-        {
-            int j = 0;
-        }
+        
+       
         public void ris()
         {
             for (int i = 0; i < list.Count; i++)
@@ -607,28 +746,55 @@ public partial class Form1 : Form
                     break;
 
             }
-            lst.Clear();
-            list.Clear();
+            //lst.Clear();
+            //list.Clear();
         }
 
         private void radioButton6_CheckedChanged(object sender, EventArgs e)
         {
             sw = 3;
+            list.Clear();
+            lst.Clear();
+            rectangles.Clear();
         }
 
         private void radioButton5_CheckedChanged(object sender, EventArgs e)
         {
             sw = 6;
+            list.Clear();
+            lst.Clear();
+            rectangles.Clear();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            dvpprotivkr();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            dvpokr();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            dvvnutrb();
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
             sw = 9;
+            list.Clear();
+            lst.Clear();
+            rectangles.Clear();
         }
 
         private void radioButton7_CheckedChanged(object sender, EventArgs e)
         {
             sw = 12;
+            list.Clear();
+            lst.Clear();
+            rectangles.Clear();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -639,10 +805,7 @@ public partial class Form1 : Form
         private void Form1_Load(object sender, EventArgs e)
         {
             plato = pictureBox1.CreateGraphics();
-            u1 = 7.5F;
-            u2 = 15;
-            u3 = 30;
-            u4 = 60;
+          
         }
     } 
 }
